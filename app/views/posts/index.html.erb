@@ -1,0 +1,30 @@
+Post creados por deportistas
+<body background="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQYWscUG8hYmtKs_e_Kz9xgKubkLSsmQXslPCpokThbFzmDt1EH">
+<%=button_to "new post", "/posts/new",  method: :get %> 
+
+<% @posts.each do |post| %>
+<center>
+  <div class="card" style="width: 25rem; height: 20rem ">
+  <img src="" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-title"><%= post.title%></h3>
+    
+    <p class="card-text"></p>
+    <%= post.description%>
+    
+    <p> <% if post.image.attached? %>
+    <%= image_tag post.image, height: 160 %> </p>
+    <% end %> 
+  </div>
+  <td>
+  <%= link_to "Mostrar", post %>
+  <% if signed_in? %>
+    <%= link_to "Editar", edit_post_path(post) %>
+    <%= link_to "Eliminar", post, method: :delete, data: { confirm: "¿Estás seguro de eliminar este libro?" } %>
+  <% end %>
+</td>
+</div>
+</center>
+<% end %>
+
+

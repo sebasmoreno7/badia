@@ -1,0 +1,16 @@
+<h1>This is your post</h1>
+
+<center>
+<div class="jumbotron">
+  <div class="d-flex justify-content-center">
+    <div><%= image_tag @post.image_tag, class: "header_image" %></div>
+  </div>
+</div>
+</center>
+
+
+<p>
+<%= button_to "Delete", @post, method:  :delete %> 
+
+<%= button_to "Edit","/posts/#{@post.id}/edit",  method: :get %> 
+</p>
