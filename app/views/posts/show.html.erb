@@ -3,14 +3,13 @@
 <center>
 <div class="jumbotron">
   <div class="d-flex justify-content-center">
-    <div><%= image_tag @post.image_tag, class: "header_image" %></div>
+    <div ><%= image_tag @post.image_tag, class: "header_image" %></div>
   </div>
 </div>
 </center>
 
-
-<p>
+<div>
 <%= button_to "Delete", @post, method:  :delete %> 
 
 <%= button_to "Edit","/posts/#{@post.id}/edit",  method: :get %> 
-</p>
+</div>
