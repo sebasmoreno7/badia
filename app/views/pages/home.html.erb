@@ -1,7 +1,11 @@
-
-
-<h1>Club Badia del Vallès </h1> <%=button_to "New article players", "/posts",  method: :get %> <%=button_to "Instagram", "https://www.instagram.com/clubbadiadelvalles/",  method: :get %> <%=button_to "Facebook", "https://www.facebook.com/Club-Badia-del-Vall%C3%A8s-442047096629930/",  method: :get %>
-<p> ¡HEMOS VUELTO y CON TODA! @clubbadiadelvalles en BOGOTÀ comienza su calendario deportivo 2020! Nuevas noticias, mejores perspectivas, más intercambios y MUCHO WATERPOLO para este año! NO FALTES! MAÑANA COMENZAMOS! 1,2,3 BADIA!!!#forçaalcanut #waterpolo #poloacuatico #pallanuoto #wasserball @ Complejo acuático Simón Bolívar </p>
- <center>
-   <%= image_tag("k.jpg") %>
-   </center>
+<h1 class="mb-4 text-center text-white">Club Badia del Vallès</h1>
+<div class="mb-3 text-center">
+  <%= link_to 'Posts', posts_path, class: 'btn btn-primary' %>
+  <%= link_to 'Articles', articles_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Instagram', 'https://www.instagram.com/clubbadiadelvalles/', class: 'btn btn-info', target: '_blank' %>
+  <%= link_to 'Facebook', 'https://www.facebook.com/Club-Badia-del-Vall%C3%A8s-442047096629930/', class: 'btn btn-info', target: '_blank' %>
+</div>
+<p class="text-white">¡HEMOS VUELTO y CON TODA! @clubbadiadelvalles en BOGOTÀ comienza su calendario deportivo 2020! Nuevas noticias, mejores perspectivas, más intercambios y MUCHO WATERPOLO para este año! NO FALTES! MAÑANA COMENZAMOS! 1,2,3 BADIA!!!</p>
+<div class="text-center">
+  <%= image_tag 'k.jpg', class: 'img-fluid' %>
+</div>

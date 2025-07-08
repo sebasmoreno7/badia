@@ -1,29 +1,23 @@
-<h1>Post creados por deportistas</h1>
-<%=button_to "new post", "/posts/new",  method: :get %> 
+<h1>Posts</h1>
+<%= link_to 'New Post', new_post_path, class: 'btn btn-primary mb-3' %>
 
-<% @posts.each do |post| %>
-<center>
-  <div class="card" style="width: 25rem; height: 20rem ">
-  <img src="" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h3 class="card-title"><%= post.title%></h3>
-    
-    <p class="card-text"></p>
-    <%= post.description%>
-    
-    <p> <% if post.image.attached? %>
-    <%= image_tag post.image, height: 160 %> </p>
-    <% end %> 
-  </div>
-  <td>
-  <%= link_to "Mostrar", post %>
-  <% if signed_in? %>
-    <%= link_to "Editar", edit_post_path(post) %>
-    <%= link_to "Eliminar", post, method: :delete, data: { confirm: "¿Estás seguro de eliminar este libro?" } %>
+<div class="row">
+  <% @posts.each do |post| %>
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <% if post.image.attached? %>
+          <%= image_tag post.image, class: 'card-img-top', height: '200' %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= post.title %></h5>
+          <p class="card-text"><%= truncate(post.description, length: 100) %></p>
+          <%= link_to 'Show', post, class: 'btn btn-sm btn-secondary' %>
+          <% if user_signed_in? && current_user == post.user %>
+            <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-sm btn-primary' %>
+            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</td>
 </div>
-</center>
-<% end %>
-
-

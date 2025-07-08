@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
-<body background="https://image.freepik.com/foto-gratis/fondo-fondo-oscuro-muro-hormigon_92256-72.jpg">
- 
   <head>
-   <style>
+    <style>
   h1 {
     color: white
   }
@@ -13,17 +11,16 @@
   div {
     color: red
   }
-  </style>
+    </style>
     <title>Badia Del Vallès</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-   
-  <body>
+  <body style="background:url('https://image.freepik.com/foto-gratis/fondo-fondo-oscuro-muro-hormigon_92256-72.jpg')">
 
      <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
@@ -40,8 +37,8 @@
       | <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
       <% end %>
       </p>
-   <div class='container'>
-    <%= yield %>
-  </div>
-</body>
+    <div class='container mt-4'>
+      <%= yield %>
+    </div>
+  </body>
 </html>
