@@ -18,4 +18,6 @@ This upgrade replaces Rails 6.0/Ruby 2.7 and Webpacker/Turbolinks. Delete links 
 
 Production now requires a separately managed PostgreSQL `DATABASE_URL` and a securely provided Rails secret. Local SQLite data will **not** move automatically. Back up and migrate any real database explicitly. Active Storage still uses local disk; choose persistent object storage and plan any upload transfer before deploying to an ephemeral host. `config.force_ssl` is enabled. No production database migration or deployment is included in this PR.
 
+Devise password resets require outbound email, which is not configured for a free host; [Render Free blocks common SMTP ports](https://render.com/docs/free). Choose a permitted HTTP email service and its credentials before relying on password recovery. No custom jobs or Action Cable subscriptions exist; the generated production Cable config still references Redis and would need review if real-time features are added.
+
 Confirm the existing app and database, test against a staging copy, and preserve a rollback deployment and database backup before rollout. Reverting code cannot undo data transfer or schema changes. A clean dependency audit only addresses advisories in its database at that moment.
