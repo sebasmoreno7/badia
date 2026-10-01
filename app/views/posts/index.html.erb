@@ -14,7 +14,7 @@
           <%= link_to 'Show', post, class: 'btn btn-sm btn-secondary' %>
           <% if user_signed_in? && current_user == post.user %>
             <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-sm btn-primary' %>
-            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+            <%= link_to 'Delete', post, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
           <% end %>
         </div>
       </div>
