@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_post!, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -14,7 +15,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    redirect_to posts_path, alert: 'Not authorized' unless current_user == @post.user
   end
 
   def create
@@ -27,20 +27,16 @@ class PostsController < ApplicationController
   end
 
   def update
-    if current_user == @post.user && @post.update(post_params)
+    if @post.update(post_params)
       redirect_to @post, notice: 'Post was successfully updated.'
     else
-      redirect_back fallback_location: posts_path, alert: 'Not authorized to edit'
+      render :edit
     end
   end
 
   def destroy
-    if current_user == @post.user
-      @post.destroy
-      redirect_to posts_url, notice: 'Post was successfully destroyed.'
-    else
-      redirect_back fallback_location: posts_path, alert: 'Not authorized to delete'
-    end
+    @post.destroy
+    redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
 
   private
@@ -48,6 +44,11 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
+    def authorize_post!
+      redirect_to posts_path, alert: 'Not authorized' unless @post.user == current_user
+    end
+
     def post_params
       params.require(:post).permit(:title, :description, :image)
-    endend
+    end
+end
